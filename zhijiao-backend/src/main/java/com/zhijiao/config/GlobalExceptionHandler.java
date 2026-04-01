@@ -27,12 +27,17 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 业务异常
+     * 业务异常 / 空指针
      */
     @ExceptionHandler(RuntimeException.class)
     public Result<Void> handleRuntimeException(RuntimeException e) {
+        if (e instanceof NullPointerException) {
+            // NPE 打完整堆栈，方便定位
+            log.error("空指针异常：", e);
+            return Result.error("服务器内部错误，请联系管理员");
+        }
         log.error("业务异常：{}", e.getMessage());
-        return Result.error(e.getMessage());
+        return Result.error(e.getMessage() != null ? e.getMessage() : "业务处理失败");
     }
 
     /**

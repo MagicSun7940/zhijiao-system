@@ -13,7 +13,7 @@
     <el-row :gutter="20" style="margin-top:20px">
       <el-col :span="16">
         <el-card header="最新教学资源" shadow="hover">
-          <el-list v-loading="loading">
+          <div v-loading="loading">
             <el-card v-for="share in latestShares" :key="share.id" shadow="never"
               class="share-item" @click="$router.push('/student/share')">
               <div class="share-row">
@@ -24,7 +24,9 @@
                 </div>
               </div>
             </el-card>
-          </el-list>
+            <el-empty v-if="!loading && latestShares.length === 0"
+              description="暂无教学资源" :image-size="60" />
+          </div>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -60,7 +62,7 @@ onMounted(loadShares)
 </script>
 
 <style scoped>
-.welcome-card { background: linear-gradient(135deg, #e8f4fd, #f0f9ff); }
+.welcome-card { background: var(--color-background-info); }
 .welcome-content { display: flex; align-items: center; gap: 20px; }
 .welcome-text h2 { font-size: 20px; color: #1a1a2e; margin-bottom: 6px; }
 .welcome-text p { color: #666; font-size: 14px; }
