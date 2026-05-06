@@ -16,10 +16,16 @@ zhijiao-backend/src/main/resources/application-dev.yml
 zhijiao-frontend/node_modules/
 zhijiao-frontend/dist/
 zhijiao-frontend/.env.local
+zhijiao-frontend/.env.*.local
 
 # ===== Claude Code =====
 CLAUDE.md
 .claude/
+
+# ===== 本地工具 =====
+.vscode/
+毕设/
+临时文件/
 
 # ===== 系统文件 =====
 .DS_Store

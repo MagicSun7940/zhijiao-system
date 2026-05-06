@@ -1,0 +1,8 @@
+{
+  "appId": "com.zhijiao.app",
+  "appName": "支教管理系统",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": true
+  }
+}
