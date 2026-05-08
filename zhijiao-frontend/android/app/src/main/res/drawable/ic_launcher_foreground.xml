@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Left book page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M22,58 L22,84 L54,81 L54,55 Q38,50 22,58 Z"/>
+
+    <!-- Right book page (light blue tint) -->
+    <path
+        android:fillColor="#BBDEFB"
+        android:pathData="M86,58 L86,84 L54,81 L54,55 Q70,50 86,58 Z"/>
+
+    <!-- Location pin body -->
+    <path
+        android:fillColor="#FF7043"
+        android:pathData="M54,17 A11,11 0 1,1 54,39 A11,11 0 1,1 54,17 Z"/>
+
+    <!-- Location pin inner white dot -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,22 A6,6 0 1,1 54,34 A6,6 0 1,1 54,22 Z"/>
+
+    <!-- Location pin tail -->
+    <path
+        android:fillColor="#FF7043"
+        android:pathData="M46,36 L54,51 L62,36 Z"/>
+
+</vector>
