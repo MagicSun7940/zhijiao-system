@@ -4,10 +4,16 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zhijiao.common.result.Result;
 import com.zhijiao.entity.User;
+import com.zhijiao.service.ApplicationService;
+import com.zhijiao.service.PostService;
+import com.zhijiao.service.ShareService;
 import com.zhijiao.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户管理接口（仅管理员）
@@ -18,6 +24,24 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final PostService postService;
+    private final ApplicationService applicationService;
+    private final ShareService shareService;
+
+    /**
+     * 管理员数据概览统计
+     */
+    @GetMapping("/stats")
+    public Result<Map<String, Long>> stats(HttpServletRequest request) {
+        Integer role = (Integer) request.getAttribute("role");
+        if (role == null || role != 1) return Result.error(403, "仅管理员可访问");
+        Map<String, Long> map = new HashMap<>();
+        map.put("userCount", userService.count(new LambdaQueryWrapper<User>().ne(User::getRole, 1)));
+        map.put("postCount", postService.count());
+        map.put("applicationCount", applicationService.count());
+        map.put("shareCount", shareService.count());
+        return Result.success(map);
+    }
 
     /**
      * 分页查询用户列表（仅管理员）

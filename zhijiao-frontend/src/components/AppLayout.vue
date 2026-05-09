@@ -38,7 +38,7 @@
       </header>
 
       <!-- 移动端页面标题栏 -->
-      <div class="mobile-breadcrumb" v-if="isMobile">
+      <div class="mobile-breadcrumb" v-if="isMobile" @click="router.back()">
         <el-icon style="font-size:16px;color:#666"><ArrowLeft /></el-icon>
         <span>{{ currentTitle }}</span>
       </div>
